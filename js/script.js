@@ -50,4 +50,8 @@ function iniciarJogo() {
         snake[0].x = 16 * box
     }
 
+    criarGB()
+    criarCobrinha()
+    drawFood()
+
 }
