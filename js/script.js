@@ -21,7 +21,7 @@ let food = {
 }
 
 //função para criar o background
-function criarGB{
+function criarGB(){
     context.fillStyle = "ligthgreen"
     //denha o retnagulo usando X e Y e a largura setadas
     context.fillRect(0, 0, 16 * box, 16 * box)
@@ -54,4 +54,12 @@ function iniciarJogo() {
     criarCobrinha()
     drawFood()
 
+    let snakeX = snake[0].x
+    let snakeY = snake[0].y
+
+    
+    if(direction == "right") snakeX += box
+    if(direction == "left") snakeX += box
+    if(direction == "up") snakeY += box
+    if(direction == "down") snakeY += box
 }
