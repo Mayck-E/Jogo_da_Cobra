@@ -69,10 +69,12 @@ function iniciarJogo() {
     }
 
     for (i = 1; i < snake.length; i++) {
+        document.getElementById("pnts").innerText = pontos + " pontos" 
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
-            alert('Game Over >> Você obteve: ' + pontos + ' pontos.')
-            
+            document.getElementById("pnts").innerText = "Após " + pontos + " pontos você perdeu" 
+
+                       
         }
     }
 
