@@ -2,6 +2,7 @@
 let canvas = document.getElementById("gamesnake");
 let context = canvas.getContext("2d");
 let box = 16;
+let pontos = 0
 
 // kobrinha
 let snake = [];
@@ -23,7 +24,7 @@ let food ={
 
 // fundo
 function criarBG() {
-    context.fillStyle = "lightgreen"
+    context.fillStyle = "black"
 // desenha retângulo usnado x e y
     context.fillRect(0, 0, 32 * box, 32 * box);
 }
@@ -31,7 +32,7 @@ function criarBG() {
 // cria kobrinha
 function criaCobrinha (){
     for(i = 0; i < snake.length; i++) {
-        context.fillStyle = "green"
+        context.fillStyle = "white"
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 }
@@ -54,13 +55,13 @@ function update(event) {
 
 // função peincipal
 function iniciarJogo() {
-    if (snake[0].x > 32*box && direction == "right") {
+    if (snake[0].x > 30*box && direction == "right") {
         snake[0].x = 0;
     }
     if (snake[0].x < 0 && direction == "left") {
         snake[0].x = 16 * box;
     }
-    if (snake[0].y > 32*box && direction == "down") {
+    if (snake[0].y > 30*box && direction == "down") {
         snake[0].y = 0;
     }
     if (snake[0].y < 0 && direction == "up") {
@@ -70,7 +71,8 @@ function iniciarJogo() {
     for (i = 1; i < snake.length; i++) {
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
-            alert('Game Over >:O')
+            alert('Game Over >> Você obteve: ' + pontos + ' pontos.')
+            
         }
     }
 
@@ -92,6 +94,7 @@ function iniciarJogo() {
     } else {
         food.x = Math.floor(Math.random() * 15 +1) * box;
         food.y = Math.floor(Math.random() * 15 +1) * box;
+        pontos += 1
     }
 
     let newHead ={
