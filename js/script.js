@@ -74,11 +74,8 @@ function iniciarJogo() {
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(jogo);
             document.getElementById("pnts").innerText = "Após " + pontos + " pontos você perdeu"
-
-
         }
     }
-
     criarBG();
     criaCobrinha();
     drawFood();
