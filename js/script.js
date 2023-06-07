@@ -7,6 +7,7 @@ let box = 32
 
 let snake = []
 
+
 //inicio da cobrinha 
 snake[0] = {
     x: 8 * box, y: 8 * box
@@ -62,4 +63,11 @@ function iniciarJogo() {
     if(direction == "left") snakeX += box
     if(direction == "up") snakeY += box
     if(direction == "down") snakeY += box
+
+    let newHead ={
+        x: snakeX, y: snakeY
+    }
+
+    snake.unshift(newHead); //método unshift adiciona como primeiro quadradinho da cobrinha
+
 }
