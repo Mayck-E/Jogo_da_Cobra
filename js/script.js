@@ -26,7 +26,7 @@ let food = {
 
 // fundo
 function criarBG() {
-    context.fillStyle = "white"
+    context.fillStyle = "rgba(0, 0, 0, 0.6)"
     // desenha retângulo usnado x e y
     context.fillRect(0, 0, 32 * box, 32 * box);
 }
@@ -34,10 +34,12 @@ function criarBG() {
 // cria kobrinha
 function criaCobrinha() {
     for (i = 0; i < snake.length; i++) {
-        context.fillStyle = "black"
+        context.fillStyle = "white"
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 }
+
+
 
 // desenha comida
 function drawFood() {
@@ -96,7 +98,10 @@ function iniciarJogo() {
     } else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
-        jogo = setInterval(iniciarJogo, velocidade-0.1)
+        clearInterval(jogo)
+        velocidade -= 2
+        jogo = setInterval(iniciarJogo, velocidade)
+
         pontos += 1
     }
 
@@ -110,10 +115,8 @@ function iniciarJogo() {
 
 
 
-function restart() {
-    resposta = confirm('Você deseja recomeçar?')
-    if (resposta) {
-        location.reload()
-    }
 
+function restart(){
+    pontos = 0
+    context.clearRect(0, 0, box, box);
 }
