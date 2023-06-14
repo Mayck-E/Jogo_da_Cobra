@@ -3,6 +3,8 @@ let canvas = document.getElementById("gamesnake");
 let context = canvas.getContext("2d");
 let box = 16;
 let pontos = 0
+let velocidade = 100
+let jogo = setInterval(iniciarJogo, velocidade)
 
 // kobrinha
 let snake = [];
@@ -73,7 +75,7 @@ function iniciarJogo() {
         document.getElementById("pnts").innerText = pontos + " pontos"
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(jogo);
-            document.getElementById("pnts").innerText = "Após " + pontos + " pontos você perdeu"
+            // document.getElementById("pnts").innerText = "Após " + pontos + " pontos você perdeu"
         }
     }
     criarBG();
@@ -94,6 +96,7 @@ function iniciarJogo() {
     } else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
+        jogo = setInterval(iniciarJogo, velocidade-0.1)
         pontos += 1
     }
 
@@ -105,12 +108,12 @@ function iniciarJogo() {
     snake.unshift(newHead)
 }
 
-let jogo = setInterval(iniciarJogo, 100)
+
 
 function restart() {
     resposta = confirm('Você deseja recomeçar?')
     if (resposta) {
-        jogo = setInterval(0)
+        location.reload()
     }
 
 }
