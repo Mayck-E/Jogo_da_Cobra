@@ -5,6 +5,7 @@ let box = 16;
 let pontos = 0
 let velocidade = 100
 let jogo = setInterval(iniciarJogo, velocidade)
+let img = 'url(./img/img.png)'
 
 // kobrinha
 let snake = [];
@@ -34,7 +35,7 @@ function criarBG() {
 // cria kobrinha
 function criaCobrinha() {
     for (i = 0; i < snake.length; i++) {
-        context.fillStyle = "white"
+        context.fillStyle = img
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 }
@@ -56,6 +57,7 @@ function update(event) {
     if (event.keyCode == (38 || 87) && direction != 'down') direction = 'up';
     if (event.keyCode == (39 || 68) && direction != 'left') direction = 'right';
     if (event.keyCode == (40 || 83) && direction != 'up') direction = 'down';
+    if (event.keyCode == 32) restart()
 }
 
 // função peincipal
@@ -111,12 +113,14 @@ function iniciarJogo() {
     }
     // método unshift adiciona como primeiro quadrinho da cobrinha
     snake.unshift(newHead)
+
+
 }
 
 
 
-
 function restart(){
-    pontos = 0
-    context.clearRect(0, 0, box, box);
+    if(confirm('Deseja mesmo reiniciar? (você perderá seus pontos)')){
+        location.reload()
+    }
 }
