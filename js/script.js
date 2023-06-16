@@ -7,6 +7,8 @@ let velocidade = 100
 let jogo = setInterval(iniciarJogo, velocidade)
 let img = 'url(./img/img.png)'
 
+const introMusic = new Audio('../som/song.m4a')
+
 // kobrinha
 let snake = [];
 
@@ -62,6 +64,7 @@ function update(event) {
 
 // função peincipal
 function iniciarJogo() {
+    song()
     if (snake[0].x > 32 * box && direction == "right") {
         snake[0].x = 0;
     }
@@ -79,6 +82,7 @@ function iniciarJogo() {
         document.getElementById("pnts").innerText = pontos + " pontos"
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
             clearInterval(jogo);
+            introMusic.pause()
             // document.getElementById("pnts").innerText = "Após " + pontos + " pontos você perdeu"
         }
     }
@@ -123,4 +127,8 @@ function restart(){
     if(confirm('Deseja mesmo reiniciar? (você perderá seus pontos)')){
         location.reload()
     }
+}
+
+function song() {
+    introMusic.play()
 }
