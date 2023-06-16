@@ -35,7 +35,7 @@ function criarBG() {
 // cria kobrinha
 function criaCobrinha() {
     for (i = 0; i < snake.length; i++) {
-        context.fillStyle = img
+        context.fillStyle = "white"
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 }
