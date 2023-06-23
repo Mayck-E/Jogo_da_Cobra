@@ -7,7 +7,7 @@ let velocidade = 100
 let jogo = setInterval(iniciarJogo, velocidade)
 let img = 'url(./img/img.png)'
 
-const introMusic = new Audio('../som/song.mp3')
+const introMusic = new Audio('../som/song.m4a')
 
 // kobrinha
 let snake = [];
